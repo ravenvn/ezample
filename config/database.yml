@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV['EZAMPLE_DATABASE_USER'] %>
+  password: <%= ENV['EZAMPLE_DATABASE_PASSWORD'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: ezample_development
+
+test:
+  <<: *default
+  database: ezample_test
+
+production:
+  <<: *default
+  database: ezample_production
